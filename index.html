@@ -12,21 +12,35 @@
 
 <body>
     <header>
-        <div class="high-score">View Highscores</div>
-        <div class="timer">Time:</div>
+        <div class="high-score"><a href="highscores.html">View Highscores</a></div>
+        <div class="timer">Time: <span id="time">0</span></div>
     </header>
 
     <main>
-        <section>
-            <div class="">
-                <h1>Coding Quiz Challenge</h1>
-                <div class="body-content">Try to answer the following code-related questions within the time limit. Keep
-                    in mind that incorrect answers will penalize your score/time by ten seconds!</div>
+        <div class="start-screen">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit. Keep
+                in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <button id="start">Start Quiz</button>
+        </div>
+
+        <div id="questions" class="hidden">
+            <h2 id="question-title"></h2>
+            <div id="choices">
             </div>
-        </section>
+        </div>
+
+        <div id="end-screen" class="hidden">
+            <h2>Way to go!</h2>
+            <p>Your final score is <span id="final-score"></span></p>
+            <p> Enter your initials: <input type="text" id="initials" max="3" />
+                <button id="submit">Submit</button>
+            </p>
+        </div>
     </main>
 
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/questions.js"></script>
+    <script src="assets/js/logic.js"></script>
 </body>
 
 </html>

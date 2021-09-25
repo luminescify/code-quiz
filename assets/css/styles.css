@@ -19,6 +19,17 @@ header {
     
 }
 
-.high-score {
+.high-score a{
     color: #432b6b;
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Set in JS logic file */
+.choice {
+    background-color: #432b6b;
+    color: white;
 }
