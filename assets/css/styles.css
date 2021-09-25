@@ -1,35 +1,193 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+    font-family: harryPotterFont;
+    src: url(../fonts/HARRYP__.TTF);
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 100vh;
     background-color: white;
 }
 
 header {
-    flex-wrap: wrap;
+    display: flex;
     justify-content: space-between;
-    
+}
+
+header > .high-score {
+    align-self:flex-start;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+header > .timer {
+    align-self: flex-end;
+    margin: 15px;
+    align-items: center;
+    border: 2.5px solid black;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .high-score a{
-    color: #432b6b;
+    color: black;
     text-decoration: none;
+    border: 2.5px solid black;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+    font-size: 16px;
 }
 
+.high-score a:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+    
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin: 5% 25% 0% 25%;
+}
+
+.start-screen > h1 {
+    font-weight: bold;
+    font-size: 2vw;
+    margin-bottom: 25px;
+}
+
+.start-screen > #harry-potter {
+    font-family: harryPotterFont;
+    font-size: 100px;
+    color: gold;
+}
+
+.start-screen > p {
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+#start {
+    background-color: transparent;
+    color: black;
+    border: 2.5px solid black;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#start:hover {
+    background-color: black;
+    color: white;
+
+}
+
+#question-title {
+    font-size: 2vw;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Hides/Reveals Start and End Screens */
 .hidden {
     display: none;
 }
 
 /* Set in JS logic file */
 .choice {
-    background-color: #432b6b;
+    display: flex;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 10px 5px 10px 0px;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.choice:hover {
+    background-color: black;
     color: white;
+}
+
+/* The following CSS is for the Highscores page */
+.leaderboard {
+    font-weight: bold;
+    font-size: 2vw;
+    margin-bottom: 25px;
+}
+
+.button-wrapper {
+    align-items: center;
+}
+
+.go-back {
+    background-color: transparent;
+    margin: 10px;
+    padding: 10px;
+    border: 2.5px solid black;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.go-back a {
+    color: black;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+    font-size: 16px;
+}
+
+.go-back a:hover {
+    color: white;
+}
+
+.go-back:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+.clear {
+    background-color: transparent;
+    color: black;
+    border: 2.5px solid black;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.clear:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+.userScore:nth-child(even) {
+    background-color: rgb(179, 179, 179);
+    color: black;
+}
+
+.userScore:nth-child(odd) {
+    background-color: white;
+    color: black;
 }
