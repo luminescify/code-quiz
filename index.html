@@ -25,15 +25,17 @@
             <button id="start">Start Quiz</button>
         </div>
 
+        <!-- Sections hidden until game start -->
         <div id="questions" class="hidden">
             <h2 id="question-title"></h2>
             <div id="choices">
             </div>
+        <div id="right-wrong"></div>
         </div>
 
         <div id="end-screen" class="hidden">
             <h2>You're a wizard, Harry!</h2>
-            <p>Your final score is <span id="final-score"></span></p>
+            <p>Your final score is <span id="final-score">0</span></p>
             <p> Enter your initials: <input type="text" id="initials" max="3" />
                 <button id="submit">Submit</button>
             </p>
