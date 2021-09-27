@@ -106,8 +106,7 @@ main {
     display: none;
 }
 
-/* Set in JS logic file */
-.choice {
+#choice1, #choice2, #choice3, #choice4 {
     display: flex;
     background-color: transparent;
     color: black;
@@ -120,9 +119,33 @@ main {
     transition: 0.3s;
 }
 
-.choice:hover {
+#choice1:hover {
     background-color: black;
     color: white;
+}
+
+#choice2:hover {
+    background-color: black;
+    color: white;
+}
+
+#choice3:hover {
+    background-color: black;
+    color: white;
+}
+
+#choice4:hover {
+    background-color: black;
+    color: white;
+}
+
+#right-wrong {
+    text-align: left;
+    font-size: 20px;
+    color: gray;
+    padding: 10px 0px 10px 0px;
+    font-weight: bold;
+    font-style: italic;
 }
 
 /* The following CSS is for the Highscores page */

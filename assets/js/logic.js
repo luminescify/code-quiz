@@ -4,6 +4,7 @@ var questionIndex = 0;
 var currentQuestion = questions[questionIndex];
 var highScores = [];
 
+
 // DOM elements
 var startButton = document.querySelector("#start");
 var questionsEl = document.querySelector("#questions");
@@ -14,6 +15,13 @@ var submitButton = document.querySelector("#submit");
 var userInitials = document.querySelector("#initials")
 var storedScores = document.querySelector(".stored-scores");
 var rightWrong = document.querySelector("#right-wrong");
+var optionButtons = document.querySelector(".choice");
+var titleEl = document.querySelector("#question-title");
+var choice1 = document.querySelector("#choice1");
+var choice2 = document.querySelector("#choice2");
+var choice3 = document.querySelector("#choice3");
+var choice4 = document.querySelector("#choice4");
+
 
 
 // Starts the quiz
@@ -31,21 +39,20 @@ function startQuiz() {
 // Pulls first question from question index array + gives answer choices
 function getCurrentQuestion() {
     console.log(currentQuestion);
-    var titleEl = document.querySelector("#question-title");
-    titleEl.textContent = currentQuestion.title;
-    questionChoices.textContent = "";
-    
-    for (var i = 0; i < currentQuestion.choice.length; i++) {
-        var choices = document.createElement("button");
-        choices.setAttribute("class", "choice");
-        choices.setAttribute("value", currentQuestion.choice[i]);
 
-        choices.textContent = i + 1 + ". " + currentQuestion.choice[i];
-        questionChoices.appendChild(choices);
-    } 
+    // Checks if there are any more questions, and if not, ends the quiz
+    if (questionIndex >= questions.length) {
+        gameOver();
+    } else {
+        titleEl.textContent = currentQuestion.title;
+        choice1.textContent = currentQuestion.choice[0];
+        choice2.textContent = currentQuestion.choice[1];
+        choice3.textContent = currentQuestion.choice[2];
+        choice4.textContent = currentQuestion.choice[3];
+    };
 }
 
-// Starts and stops the timer and run gameOver
+// Starts and stops the timer and runs gameOver
 function startTimer() {
     timer = setInterval (function() {
         time--;
@@ -64,32 +71,43 @@ function startTimer() {
     }, 1000);
 };
 
+
 // Checks whether the answer selected is correct or incorrect + deducts points appropriately
 function checkAnswer(event) {
-    event.preventDefault();
-    rightWrong.setAttribute("display: block");
-    var p = document.createElement("p");
-    rightWrong.appendChild(p);
-    
-    setTimeout(function() {
-        p.style.display = "none";
-    }, 1000);
-
-    // If correct answer is chosen, "Correct!" is displayed
-    var chosenAnswer = event.target
-    if (questions[questionIndex].answer === chosenAnswer.innerText) {
-        p.textContent = "You got it!";
-    // If incorrect answer is chosen, "Wrong!" is displayed and 10 seconds are taken from time
-    } else if (questions[questionIndex].answer !==chosenAnswer.innerText) {
-        time = time - 10;
-        p.textContent = "Good try!";
-    }
-
-    // Cycles to the next question
-    if (questions.length > questionIndex + 1 || time === 0) {
+    // If user choice text matches answer text, display "You got it!"
+    if ((document.getElementById(event).textContent) === (questions[questionIndex].answer)) {
+        rightAnswer();
         questionIndex++;
+    // If user choice text does not match answer text, display "Good try!" and -10 seconds
+    } else {
+        wrongAnswer();
+        questionIndex++
     }
     getCurrentQuestion(questionIndex);
+}
+
+// If user selects right answer...
+function rightAnswer() {
+    // Set finalScore to current time
+    finalScore = time;
+    // Display "You got it!"
+    rightWrong.textContent = "You got it!";
+    // Remove message after 1 sec
+    setTimeout(function() {
+        rightWrong.style.display = "none";
+    }, 1000);
+}
+
+// If user selects wront answer...
+function wrongAnswer() {
+    // Subtract 10 seconds from their time
+    time = time - 10;
+    // Display "Good try!"
+    rightWrong.textContent = "Good try!";
+    // Remove message after 1 sec
+    setTimeout(function() {
+        rightWrong.style.display = "none";
+    }, 1000);
 }
 
 // Retrieves information from user inputs and appends them to the page
@@ -102,6 +120,7 @@ function addScore() {
         storedScores.appendChild(li);
     }
 };
+
 
 // Saves user inputted score as an object and stringify's in local storage
 function saveScore() {
@@ -120,21 +139,45 @@ if (JSON.parse(localStorage.getItem("scores")) !== null) {
     highScores = JSON.parse(localStorage.getItem("scores"));
 }
 
+
 // Hides questions screen and shows end screen. Also adds and stores score and initials in local storage
 function gameOver() {
-    // Hides questions screen
-    var endScreen = document.querySelector(".end-screen");
-    var questionScreen = document.querySelector(".questions");
-    questionScreen.setAttribute("class","hidden");
+         // Hides questions screen
+        var endScreen = document.querySelector(".end-screen");
+        var questionScreen = document.querySelector(".questions");
+        questionScreen.setAttribute("class","hidden");
 
-    // Show end-screen
-    endScreen.removeAttribute("class");
+        // Show end-screen
+        endScreen.removeAttribute("class");
 
-    // Adds + stores high score to div on highscores page + local storage
-    addScore();
-    saveScore();
+        // Adds + stores high score to div on highscores page + local storage
+        addScore();
+        saveScore();
 }
 
 // Listens for button clicks to "Start" game and "Submit" user score info
 startButton.addEventListener("click", startQuiz);
 submitButton.addEventListener("click", saveScore);
+
+
+
+
+// If correct answer is chosen, "Correct!" is displayed
+    //var chosenAnswer = event.target
+    //if (questions[questionIndex].answer === chosenAnswer.innerHTML) {
+    //    p.textContent = "You got it!";
+    // If incorrect answer is chosen, "Wrong!" is displayed and 10 seconds are taken from time
+    //} else if (questions[questionIndex].answer !==chosenAnswer.innerHTML) {
+     //   time = time - 10;
+      //  p.textContent = "Good try!";
+    //}
+
+
+ //for (var i = 0; i < currentQuestion.choice.length; i++) {
+   // choices = document.createElement("button");
+   // choices.setAttribute("class", "choice");
+   // choices.setAttribute("value", currentQuestion.choice[i]);
+
+  //  choices.textContent = i + 1 + ". " + currentQuestion.choice[i];
+  //  questionChoices.appendChild(choices);
+  // } 
