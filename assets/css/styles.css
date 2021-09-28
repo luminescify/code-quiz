@@ -106,7 +106,8 @@ main {
     display: none;
 }
 
-#choice1, #choice2, #choice3, #choice4 {
+/* Choice class set in JS */
+.choice {
     display: flex;
     background-color: transparent;
     color: black;
@@ -119,27 +120,13 @@ main {
     transition: 0.3s;
 }
 
-#choice1:hover {
+.choice:hover {
     background-color: black;
     color: white;
 }
 
-#choice2:hover {
-    background-color: black;
-    color: white;
-}
 
-#choice3:hover {
-    background-color: black;
-    color: white;
-}
-
-#choice4:hover {
-    background-color: black;
-    color: white;
-}
-
-#right-wrong {
+#right-wrong > p {
     text-align: left;
     font-size: 20px;
     color: gray;

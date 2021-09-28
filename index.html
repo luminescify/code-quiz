@@ -29,17 +29,13 @@
         <div id="questions" class="hidden">
             <h2 id="question-title"></h2>
             <div id="choices">
-                <button type="button" onclick="checkAnswer(this.id)" class="btn" id="choice1"></button>
-                <button type="button" onclick="checkAnswer(this.id)" class="btn" id="choice2"></button>
-                <button type="button" onclick="checkAnswer(this.id)" class="btn" id="choice3"></button>
-                <button type="button" onclick="checkAnswer(this.id)" class="btn" id="choice4"></button>
             </div>
             <div id="right-wrong"></div>
         </div>
 
         <div id="end-screen" class="hidden">
             <h2>You're a wizard, Harry!</h2>
-            <p>Your final score is <span id="final-score">0</span></p>
+            <p>Your final score is <span id="final-score"></span></p>
             <p> Enter your initials: <input type="text" id="initials" max="3" />
                 <button id="submit">Submit</button>
             </p>
