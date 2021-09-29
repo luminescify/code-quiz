@@ -95,20 +95,6 @@ function setTimer() {
     }, 1000);
 };
 
-// Takes name and score from local storage and displays in p tag on leaderboard page
-function displayScores() {
-    storedScores.innerHTML = "";
-    var getInitials = localStorage.getItem("name");
-    var getScore = localStorage.getItem("score");
-    for (var i = 0; i < highScores.length; i++) {
-        var highScore = highScores[i];
-
-        var p = document.createElement("p");
-        p.textContent = highScore;
-        storedScores.appendChild(p);
-    }
-}
-
 function storeScores() {
     if (userInitials === "") {
         alert("Please enter a name");
@@ -131,7 +117,19 @@ function storeScores() {
     localStorage.setItem("scores", JSON.stringify(highScores));
 
     window.open("highscores.html", "_self");
-    displayScores();
+}
+
+if (storedScores !== null) {
+
+    highScores = JSON.parse(localStorage.getItem("scores"));
+
+    for (var i = 0; i < highScores.length; i++) {
+        var scoreList = document.createElement("li");
+        scoreList.setAttribute("class", "user-score");
+        
+        scoreList.textContent = `${i + 1}. ${highScores[i].name} – ${highScores[i].score}`;
+        storedScores.appendChild(scoreList);
+    }
 }
 
 // Hides questions screen and shows end screen. Also adds and stores score and initials in local storage
@@ -144,8 +142,10 @@ function gameOver() {
     endScreen.removeAttribute("class");
 }
 
+// Allows clear button to clear high scores locally
 function clearHighScores() {
     localStorage.clear();
+    storedScores.textContent = "";
 }
 
 

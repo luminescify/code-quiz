@@ -183,7 +183,14 @@ main {
 .leaderboard {
     font-weight: bold;
     font-size: 2vw;
-    margin-bottom: 25px;
+}
+
+.leaderboard > h1 {
+    margin-bottom: 15px;
+}
+
+.stored-scores {
+    margin-bottom: 15px;
 }
 
 .button-wrapper {
@@ -236,12 +243,28 @@ main {
     transition: 0.3s;
 }
 
-.userScore:nth-child(even) {
-    background-color: rgb(179, 179, 179);
+/* User score created in JS */
+.user-score {
     color: black;
-}
-
-.userScore:nth-child(odd) {
+    text-align: left;
+    font-size: 15px;
     background-color: white;
     color: black;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 0px 0px 5px 0px;
+}
+
+.user-score:nth-child(even) {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.user-score:nth-child(odd) {
+    background-color: rgb(224, 224, 224);
+    color: black;
+    border-radius: 20px;
+    padding: 10px;
 }
