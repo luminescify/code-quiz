@@ -1,5 +1,5 @@
 // Timer and question index variables
-var time = questions.length * 10;
+var time = questions.length * 15;
 var timer;
 var questionIndex = 0;
 
@@ -72,7 +72,7 @@ function setQuestion() {
                 } else {
                     console.log("wrong");
                     // 10 second time penalty
-                    time = time - 10;
+                    time -= 10;
                     // Display "Good try!"
                     p.textContent = "Good try!";
                     // Cycle next question
@@ -91,8 +91,8 @@ function setTimer() {
     timer = setInterval (function() {
         time--;
         timeEl.textContent = time;
-        // If time is more than 0 and questions are complete, run gameOver
-        if (time === 0 || questionIndex === questions.length) {
+        // If time is equal to 0 and questions are complete, run gameOver
+        if (time < 0 || questionIndex === questions.length) {
             clearInterval(timer);
             questionsEl.style.display = "none";
             finalScore.textContent = time;
