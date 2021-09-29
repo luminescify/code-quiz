@@ -1,7 +1,6 @@
-var time = questions.length * 5;
+var time = questions.length * 10;
 var timer;
 var questionIndex = 0;
-var highScores = [];
 
 
 // DOM elements
@@ -9,13 +8,12 @@ var startButton = document.querySelector("#start");
 var questionsEl = document.querySelector("#questions");
 var timeEl = document.querySelector("#time");
 var questionChoices = document.querySelector("#choices");
-var finalScore = document.querySelector("#final-score");
 var submitButton = document.querySelector("#submit");
-var userInitials = document.querySelector("#initials")
 var storedScores = document.querySelector(".stored-scores");
 var rightWrong = document.querySelector("#right-wrong");
+var finalScore = document.querySelector("#final-score");
 var clearButton = document.querySelector(".clear");
-
+var userInitials = document.querySelector("#initials");
 
 
 // Starts the quiz
@@ -48,7 +46,7 @@ function setQuestion() {
             choices.setAttribute("class","choice");
             choices.setAttribute("value", currentQuestion.choice[i]);
 
-            choices.textContent = i + 1 + ". " + currentQuestion.choice[i];
+            choices.textContent = currentQuestion.choice[i];
             questionChoices.appendChild(choices);
 
             choices.addEventListener("click", (event) => {
@@ -97,55 +95,72 @@ function setTimer() {
     }, 1000);
 };
 
-// Retrieves information from user inputs and appends them to the page
-function addScore(event) {
-    event.PreventDefault();
+// Takes name and score from local storage and displays in p tag on leaderboard page
+function displayScores() {
+    storedScores.innerHTML = "";
+    var getInitials = localStorage.getItem("name");
+    var getScore = localStorage.getItem("score");
+    for (var i = 0; i < highScores.length; i++) {
+        var highScore = highScores[i];
 
-    finalScore.style.display = "none";
-    highScores.style.display = "block";
-
+        var p = document.createElement("p");
+        p.textContent = highScore;
+        storedScores.appendChild(p);
+    }
 }
 
+function storeScores() {
+    if (userInitials === "") {
+        alert("Please enter a name");
+        return;
+    } else {
+        var highScores = JSON.parse(localStorage.getItem("scores"));
+    }
+    
+    if (highScores == null) {
+        highScores = [];
+    }
 
-// Saves user inputted score as an object and stringify's in local storage
-function saveScore() {
-    // Create's score object from submission
-    var newHighScore = {
-        initials: userInitials.value,
-        highScore: finalScore.value,
-    };
-    highScores.push(newHighScore);
+    highScores.push({
+        name: userInitials.value,
+        score: time
+    });
 
-    // Set's submission to local storage
+    highScores.sort((x, y) => y.score - x.score);
+
     localStorage.setItem("scores", JSON.stringify(highScores));
-}
 
-// Stores and retrieves arrays in/from local storage
-if (JSON.parse(localStorage.getItem("scores")) !== null) {
-    highScores = JSON.parse(localStorage.getItem("scores"));
+    window.open("highscores.html", "_self");
+    displayScores();
 }
-
 
 // Hides questions screen and shows end screen. Also adds and stores score and initials in local storage
 function gameOver() {
-         // Hides questions screen
-        var endScreen = document.querySelector("#end-screen");
-        questionsEl.setAttribute("class","hidden");
+    // Hides questions screen
+    var endScreen = document.querySelector("#end-screen");
+    questionsEl.setAttribute("class","hidden");
 
-        // Show end-screen
-        endScreen.removeAttribute("class");
-
-        // Adds + stores high score to div on highscores page + local storage
-        addScore();
-        saveScore();
+    // Show end-screen
+    endScreen.removeAttribute("class");
 }
 
-function clearScores() {
+function clearHighScores() {
     localStorage.clear();
-    scoreListEl.innerHTML="";
 }
 
-// Listens for button clicks to "Start" game and "Submit" user score info
-startButton.addEventListener("click", startQuiz);
-submitButton.addEventListener("click", saveScore);
-clearButton.addEventListener("click", clearScores);
+
+
+// Listens for button clicks to "Start" game only if start button exists on page
+if (startButton !== null) {
+    startButton.addEventListener("click", startQuiz);
+}
+
+// Listens for button clicks to "Submit" only if submit button exists on page
+if (submitButton !== null) {
+    submitButton.addEventListener("click", storeScores);
+}
+
+// Listens for button clicks to "Clear" high scores only if clear button exists on page
+if (clearButton !== null) {
+    clearButton.addEventListener("click", clearHighScores);
+}

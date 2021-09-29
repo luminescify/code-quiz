@@ -28,7 +28,6 @@ header > .timer {
     align-self: flex-end;
     margin: 15px;
     align-items: center;
-    border: 2.5px solid black;
     padding: 5px 10px 5px 10px;
     border-radius: 15px;
     text-transform: uppercase;
@@ -72,7 +71,7 @@ main {
 }
 
 .start-screen > p {
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 25px;
 }
 
@@ -98,6 +97,51 @@ main {
 #question-title {
     font-size: 2vw;
     text-align: left;
+    font-weight: bold;
+}
+
+#end-screen > h2 {
+    text-align: center;
+    font-size: 3vw;
+    font-weight: bold;
+    margin: 20px 0px 20px 0px;
+}
+
+#final-p {
+    text-align: center;
+    font-size: 20px;
+    margin: 10px 0px 30px 0px;
+}
+
+#end-screen > p {
+    font-size: 15px;
+    text-align: center;
+    margin: 10px 0px 30px 0px;
+}
+
+#submit {
+    background-color: transparent;
+    color: black;
+    border: 2.5px solid black;
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center;
+    font-size: 15px;
+    transition: 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+#submit:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+.leaderboard > h1 {
+    text-align: left;
+    font-size: 3vw;
     font-weight: bold;
 }
 
@@ -148,7 +192,7 @@ main {
 
 .go-back {
     background-color: transparent;
-    margin: 10px;
+    margin: 10px 0px 10px 0px;
     padding: 10px;
     border: 2.5px solid black;
     border-radius: 20px;
