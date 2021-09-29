@@ -11,12 +11,15 @@
 </head>
 
 <body>
+    <!-- Header -->
     <header>
         <div class="high-score"><a href="highscores.html">Highscores</a></div>
         <div class="timer">Time: <span id="time">0</span></div>
     </header>
 
+    <!-- Body -->
     <main>
+        <!-- Start Screen -->
         <div class="start-screen">
             <h1 id="harry-potter">Harry Potter</h1>
             <h1>Quiz Challenge</h1>
@@ -26,6 +29,7 @@
         </div>
 
         <!-- Sections hidden until game start -->
+        <!-- Questions Screen -->
         <div id="questions" class="hidden">
             <h2 id="question-title"></h2>
             <div id="choices">
@@ -33,6 +37,7 @@
             <div id="right-wrong"></div>
         </div>
 
+        <!-- End Screen -->
         <div id="end-screen" class="hidden">
             <h2>You're a wizard, Harry!</h2>
             <p id="final-p">Your final score is: <span id="final-score"></span></p>

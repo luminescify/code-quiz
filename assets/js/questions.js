@@ -1,3 +1,4 @@
+// List of populated quiz questions
 var questions = [
     {
         title: "What position does Harry play on his Quidditch team?",

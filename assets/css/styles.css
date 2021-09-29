@@ -1,14 +1,17 @@
+/* Custom HP Font for Harry Potter header */
 @font-face {
     font-family: harryPotterFont;
     src: url(../fonts/HARRYP__.TTF);
 }
 
+/* Body styling */
 body {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: white;
 }
 
+/* Header styling */
 header {
     display: flex;
     justify-content: space-between;
@@ -23,7 +26,6 @@ header > .high-score {
     font-weight: bold;
 }
 
-
 header > .timer {
     align-self: flex-end;
     margin: 15px;
@@ -35,6 +37,7 @@ header > .timer {
     font-size: 16px;
 }
 
+/* Highscores button styling */
 .high-score a{
     color: black;
     text-decoration: none;
@@ -51,6 +54,7 @@ header > .timer {
     
 }
 
+/* Main wrapper styling */
 main {
     display: flex;
     flex-wrap: wrap;
@@ -58,6 +62,7 @@ main {
     margin: 5% 25% 0% 25%;
 }
 
+/* Start screen section styling */
 .start-screen > h1 {
     font-weight: bold;
     font-size: 2vw;
@@ -75,6 +80,7 @@ main {
     margin-bottom: 25px;
 }
 
+/* Start button styling */
 #start {
     background-color: transparent;
     color: black;
@@ -94,12 +100,14 @@ main {
 
 }
 
+/* Question title styling */
 #question-title {
     font-size: 2vw;
     text-align: left;
     font-weight: bold;
 }
 
+/* End screen styling */
 #end-screen > h2 {
     text-align: center;
     font-size: 3vw;
@@ -119,6 +127,7 @@ main {
     margin: 10px 0px 30px 0px;
 }
 
+/* Submit button styling */
 #submit {
     background-color: transparent;
     color: black;
@@ -139,10 +148,14 @@ main {
     transition: 0.3s;
 }
 
+/* This begins the CSS styling for highscores.html and JS styling*/
+
+/* Leaderboard styling */
 .leaderboard > h1 {
     text-align: left;
     font-size: 3vw;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
 /* Hides/Reveals Start and End Screens */
@@ -169,7 +182,7 @@ main {
     color: white;
 }
 
-
+/* Right/Wrong message styling */
 #right-wrong > p {
     text-align: left;
     font-size: 20px;
@@ -179,20 +192,11 @@ main {
     font-style: italic;
 }
 
-/* The following CSS is for the Highscores page */
-.leaderboard {
-    font-weight: bold;
-    font-size: 2vw;
-}
-
-.leaderboard > h1 {
-    margin-bottom: 15px;
-}
-
 .stored-scores {
     margin-bottom: 15px;
 }
 
+/* Go Back button styling */
 .button-wrapper {
     align-items: center;
 }
@@ -224,6 +228,7 @@ main {
     transition: 0.3s;
 }
 
+/* Clear Leaderboard button styling */
 .clear {
     background-color: transparent;
     color: black;
